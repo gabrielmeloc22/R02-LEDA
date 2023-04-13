@@ -1,6 +1,6 @@
 package sorting.divideAndConquer;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,37 +16,41 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		if (leftIndex >= rightIndex) {
+		if (leftIndex == rightIndex) {
 			return;
 		}
-		int middle = (int) Math.floor(leftIndex + rightIndex) / 2;
+		if (array.length == 0) {
+			return;
+		}
+		int middle = (leftIndex + rightIndex) / 2;
 		sort(array, leftIndex, middle);
 		sort(array, middle + 1, rightIndex);
-		mergeArrays(array, leftIndex, middle, rightIndex);
+		mergeArrays(array, leftIndex, middle + 1, rightIndex);
 	}
 
 	private void mergeArrays(T[] array, int left, int middle, int right) {
-		List<T> a1 = Arrays.asList(Arrays.copyOfRange(array, left, middle));
-		List<T> a2 = Arrays.asList(Arrays.copyOfRange(array, middle + 1, right));
+		List<T> a1 = new ArrayList<T>(Arrays.asList(Arrays.copyOfRange(array, left, middle)));
+		List<T> a2 = new ArrayList<T>(Arrays.asList(Arrays.copyOfRange(array, middle, right + 1)));
 
-		int i = 0;
-		while (!(a1.isEmpty() && a2.isEmpty())) {
-			if (a1.get(0).compareTo(a2.get(0)) < 0) {
-				array[i] = a1.get(0);
-				a1.remove(0);
+		int i = left;
+		while (a1.size() > 0 && a2.size() > 0) {
+			T a = a1.get(0);
+			T b = a2.get(0);
+
+			if (a.compareTo(b) < 0) {
+				array[i] = a1.remove(0);
 			} else {
-				array[i] = a2.get(0);
-				a2.remove(0);
+				array[i] = a2.remove(0);
 			}
 			i++;
 		}
 		while (!a1.isEmpty()) {
-			array[i] = a1.get(0);
-			a1.remove(0);
+			array[i] = a1.remove(0);
+			i++;
 		}
 		while (!a2.isEmpty()) {
-			array[i] = a2.get(0);
-			a2.remove(0);
+			array[i] = a2.remove(0);
+			i++;
 		}
 	}
 }
