@@ -27,6 +27,9 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends
 		if (leftIndex >= rightIndex || array.length == 0) {
 			return;
 		}
+		if (leftIndex > rightIndex || leftIndex < 0 || rightIndex > array.length - 1) {
+			return;
+		}
 		medianOfThree(array, leftIndex, rightIndex);
 		int pivot = partition(array, leftIndex, rightIndex);
 		sort(array, leftIndex, pivot);
