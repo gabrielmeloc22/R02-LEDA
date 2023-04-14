@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
-import sorting.divideAndConquer.MergeSort;
+import sorting.divideAndConquer.hybridMergesort.HybridMergeSort;
 
 public class StudentSortingTest {
 
@@ -37,7 +37,7 @@ public class StudentSortingTest {
 	 * do aluno
 	 */
 	private void getImplementation() {
-		this.implementation = new MergeSort<Integer>();
+		this.implementation = new HybridMergeSort<Integer>();
 	}
 
 	public void populaVetorTamanhoPar(Integer[] arrayPadrao) {
