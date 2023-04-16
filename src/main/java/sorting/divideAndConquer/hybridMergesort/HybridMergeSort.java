@@ -35,14 +35,6 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	protected static int MERGESORT_APPLICATIONS = 0;
 	protected static int INSERTIONSORT_APPLICATIONS = 0;
 
-	public static int getINSERTIONSORT_APPLICATIONS() {
-		return INSERTIONSORT_APPLICATIONS;
-	}
-
-	public static int getMERGESORT_APPLICATIONS() {
-		return MERGESORT_APPLICATIONS;
-	}
-
 	public void sort(T[] array, int leftIndex, int rightIndex) {
 		MERGESORT_APPLICATIONS = 0;
 		INSERTIONSORT_APPLICATIONS = 0;
