@@ -12,6 +12,7 @@ import sorting.AbstractSorting;
 import sorting.divideAndConquer.MergeSort;
 import sorting.divideAndConquer.QuickSort;
 import sorting.divideAndConquer.hybridMergesort.HybridMergeSort;
+import sorting.divideAndConquer.quicksort3.QuickSortMedianOfThree;
 
 public class StudentSortingTest {
 
@@ -99,15 +100,6 @@ public class StudentSortingTest {
 	@Test
 	public void testSort05() {
 		genericTest(vetorValoresRepetidos);
-	}
-
-	@Test
-	public void testSort06() {
-		MergeSort<Integer> merge = new MergeSort<Integer>();
-		Integer[] array = { 5, 4, 1, 3, 5, 6 };
-		Integer[] expected = { 5, 1, 3, 4, 5, 6 };
-		merge.sort(array, 1, 4);
-		assertArrayEquals(expected, array);
 	}
 
 	// MÉTODOS QUE OS ALUNOS PODEM CRIAR

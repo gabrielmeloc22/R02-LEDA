@@ -24,16 +24,14 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends
 		AbstractSorting<T> {
 
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		if (leftIndex >= rightIndex || array.length == 0) {
-			return;
+		if ((leftIndex < rightIndex) && (leftIndex >= 0) && (rightIndex <= array.length - 1) && (array.length != 0)) {
+			if (leftIndex != rightIndex) {
+				medianOfThree(array, leftIndex, rightIndex);
+				int pivot = partition(array, leftIndex, rightIndex);
+				sort(array, leftIndex, pivot);
+				sort(array, pivot + 1, rightIndex);
+			}
 		}
-		if (leftIndex > rightIndex || leftIndex < 0 || rightIndex > array.length - 1) {
-			return;
-		}
-		medianOfThree(array, leftIndex, rightIndex);
-		int pivot = partition(array, leftIndex, rightIndex);
-		sort(array, leftIndex, pivot);
-		sort(array, pivot + 1, rightIndex);
 	}
 
 	private int partition(T[] array, int left, int right) {
@@ -72,7 +70,3 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends
 		Util.swap(array, middle, right - 1);
 	}
 }
-
-// [8, 9, 1, 5, 6, 4, 3]
-// [3, 9, 1, 5, 6, 4, 8]
-// [3, 9, 1, 4, 6, 5, 8]
